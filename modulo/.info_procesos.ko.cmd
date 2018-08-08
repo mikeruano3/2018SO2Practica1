@@ -1,1 +1,0 @@
-cmd_/home/miguel/Dropbox/[USAC]PROGRAS/SOPES1/PRACTICA1/modulo/info_procesos.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/miguel/Dropbox/[USAC]PROGRAS/SOPES1/PRACTICA1/modulo/info_procesos.ko /home/miguel/Dropbox/[USAC]PROGRAS/SOPES1/PRACTICA1/modulo/info_procesos.o /home/miguel/Dropbox/[USAC]PROGRAS/SOPES1/PRACTICA1/modulo/info_procesos.mod.o

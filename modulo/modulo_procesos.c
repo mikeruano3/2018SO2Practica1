@@ -5,17 +5,16 @@
     #include <linux/module.h>
     #include <linux/seq_file.h>
     #include <linux/proc_fs.h>
-    
 
     static int meminfo_proc_show(struct seq_file *m, void *v){
-	   int cont = 0;
+	    int cont = 0;
         struct task_struct *task;
 
         seq_printf(m,"{\"lista\":[\n");
 
         for_each_process(task){
 		  struct list_head *list;
-		  seq_printf(m,"{\"NAME\":\"%s\",\"USER\":\"%s\",\"PID\":\"%d\",\"STATUS\":",
+		  seq_printf(m,"{\"NAME\":\"%s\",\"USER\":\"%d\",\"PID\":\"%d\",\"STATUS\":",
                   task->comm,
                   task->cred->uid,
 		          task->pid);
