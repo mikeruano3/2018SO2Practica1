@@ -15,7 +15,7 @@
 
         for_each_process(task){
 		  struct list_head *list;
-		  seq_printf(m,"{\"NAME\":\"%s\",\"USER\":\"%s\",\"PID\":\"%d\",
+		  seq_printf(m,"{\"NAME\":\"%s\",\"USER\":\"%s\",\"PID\":\"%l\",
           \"RAM\":\"%d\",\"STATUS\":",
                   task->comm,
                   task->cred->uid,
