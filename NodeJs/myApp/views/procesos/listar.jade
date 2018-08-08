@@ -1,0 +1,29 @@
+extends ../layout
+block referencia
+    script(type='text/javascript', src='/javascripts/procesos.js')
+block content
+    h1 Listado de Procesos
+    div.table-responsive
+        table.table.table-light.table-bordered
+            thead.thead-dark
+                tr
+                    th Nombre
+                    th Usuario
+                    th Pid
+                    th Estado
+                    th Accion
+            tbody#listado
+                for proceso in lista
+                    tr
+                        th #{proceso.nombre}
+                        th #{proceso.user}
+                        th #{proceso.pid}
+                        th #{proceso.status}
+                        th
+                            a.btn.btn-danger(href="/proceso/matar/#{proceso.pid}" ) Borrar
+                else
+                    th Vacio
+                    th Vacio
+                    th Vacio
+                    th Vacio
+                    th Vacio

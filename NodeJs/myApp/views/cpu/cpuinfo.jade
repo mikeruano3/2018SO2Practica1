@@ -1,0 +1,13 @@
+extends ../layout
+block referencia
+    script(type='text/javascript', src='/javascripts/cpuinfo.js')
+    script(type='text/javascript', src='/javascripts/jquery.flot.js')
+    link(rel='stylesheet', href='/stylesheets/examples.css')
+block content
+    h1 CPU Usado
+    div#content
+        h3#usadoKB Porcentaje: 33.4%
+        h3#usadoPorc Usado: 26899 KB
+        div.demo-container
+            div#placeholder.demo-placeholder
+        input#updateInterval(type="text" value="" style="text-align: right; width:5em")

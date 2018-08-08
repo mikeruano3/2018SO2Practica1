@@ -1,0 +1,64 @@
+set DEBUG=* & npm start
+
+#COMO PROGRAMAR EN KERNEL
+http://tldp.org/LDP/lkmpg/2.6/html/index.html
+http://tldp.org/LDP/lkmpg/2.6/html/hello2.html
+
+#PARA CORRER EL ARCHIVO PROC
+make #correr este comando en carpeta del archivo
+insmod info_procesos.ko
+dmesg | tail -1
+rmmod info_procesos.ko
+
+
+#PARA EXPRESS
+# https://fernando-gaitan.com.ar/introduccion-a-node-js-parte-7-instalar-express/
+cd primer_proyecto_express
+sudo apt-get install nodejs
+sudo apt-get install node-express
+express
+npm install
+nodejs app.js
+
+
+#################################################
+##   PARA EL PROC INFO
+#################################################
+archivos en /proc
+
+cpuinfo
+meminfo
+stat
+
+
+#################################################
+### para la version del kernel
+#################################################
+uname -a
+uname -r
+
+
+
+#################################################
+##    Listar modulos montados
+##   https://www.thegeekstuff.com/2013/07/write-linux-kernel-module/
+#################################################
+lsmod
+lsmod | grep "squash"
+
+#################################################
+##    Insertar modulo (suponiendo squashfs.ko)
+#################################################
+insmod /lib/modules/3.5.0-19-generic/kernel/fs/squashfs/squashfs.ko
+
+#################################################
+##   Mostrar info modulo (suponiendo squashfs.ko)
+#################################################
+modinfo /lib/modules/3.5.0-19-generic/kernel/fs/squashfs/squashfs.ko
+
+#################################################
+##   Remover modulo (suponiendo squashfs.ko)
+#################################################
+rmmod squashfs.ko
+
+
