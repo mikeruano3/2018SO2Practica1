@@ -15,12 +15,10 @@
 
         for_each_process(task){
 		  struct list_head *list;
-		  seq_printf(m,"{\"NAME\":\"%s\",\"USER\":\"%s\",\"PID\":\"%l\",
-          \"RAM\":\"%d\",\"STATUS\":",
+		  seq_printf(m,"{\"NAME\":\"%s\",\"USER\":\"%s\",\"PID\":\"%d\",\"STATUS\":",
                   task->comm,
                   task->cred->uid,
-		          task->pid,
-                  task->totalram);
+		          task->pid);
 		if(task->state == 0){
 			seq_printf(m,"\"RUNNING\"}");
 		}
