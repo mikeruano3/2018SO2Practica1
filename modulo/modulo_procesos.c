@@ -9,6 +9,7 @@
     static int meminfo_proc_show(struct seq_file *m, void *v){
 	    int cont = 0;
         struct task_struct *task;
+        unsigned long size;
 
         seq_printf(m,"{\"lista\":[\n");
 
@@ -42,14 +43,14 @@
 		}
 		cont = cont + 1;
 
-        down_read(&task->mm->mmap_sem);       
+//        down_read(&task->mm->mmap_sem);       
         if(task->mm){
             size = (task->mm->mmap->vm_end - task->mm->mmap->vm_start);
             seq_printf(m,"\",MEM\":\"%lu\"",size);            
         }else{
             seq_printf(m,"\",MEM\":\"0\"");
         }
-        up_read(&task->mm->mmap_sem);
+//        up_read(&task->mm->mmap_sem);
         
         seq_printf(m,",\n");
         }
