@@ -28,9 +28,9 @@ exports.enviar_procesos = function(req, res){
             throw error;
         }
         var listaProc = JSON.parse(contenido);
-        for(var j=0; j<listaProc.lista.length-1; j++) {
+        for(var j=listaProc.lista.length-1; j>0; j--) {
             var proc = listaProc.lista[j];
-            var obj = new ObjProc(proc.NOMBRE, proc.USER, proc.PID, proc.STATUS);
+            var obj = new ObjProc(proc.NAME, proc.USER, proc.PID, proc.STATUS);
             listaProcesos.push(obj);
         }
     }

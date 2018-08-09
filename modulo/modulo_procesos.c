@@ -17,8 +17,8 @@
 		  seq_printf(m,"{\"NAME\":\"%s\",\"USER\":\"%d\",\"PID\":\"%d\",\"CPU\":\"%ld\",\"STATUS\":",
                   task->comm,
                   task->cred->uid,
-                  task->utime,
-		          task->pid);
+		          task->pid,
+                  task->enqued);
 		if(task->state == 0){
 			seq_printf(m,"\"RUNNING\"}");
 		}
@@ -45,7 +45,7 @@
         
         }
 
-        seq_printf(m,"{\"NOMBRE\":\"ultimo\"}]\n}\n");
+        seq_printf(m,"{\"NAME\":\"ultimo\"}]\n}\n");
         return 0;
     }
 
