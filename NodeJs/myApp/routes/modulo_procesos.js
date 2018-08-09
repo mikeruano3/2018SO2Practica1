@@ -8,11 +8,13 @@ function leer_procesos(req, res){
     });
 }
 
-function ObjProc(nombre, user, pid, status){
+function ObjProc(nombre, user, pid, status, cpu, mem){
     this.nombre = nombre;
     this.user = user;
     this.pid = pid;
     this.status = status;
+    this.cpu = cpu;
+    this.mem = mem;
 }
 
 exports.get_procesos = function(req, res){
@@ -30,7 +32,7 @@ exports.enviar_procesos = function(req, res){
         var listaProc = JSON.parse(contenido);
         for(var j=listaProc.lista.length-1; j>0; j--) {
             var proc = listaProc.lista[j];
-            var obj = new ObjProc(proc.NAME, proc.USER, proc.PID, proc.STATUS);
+            var obj = new ObjProc(proc.NAME, proc.USER, proc.PID, proc.STATUS, proc.CPU, proc.MEM);
             listaProcesos.push(obj);
         }
     }
