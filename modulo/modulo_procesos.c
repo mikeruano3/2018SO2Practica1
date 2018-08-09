@@ -14,11 +14,12 @@
 
         for_each_process(task){
 		  struct list_head *list;
-		  seq_printf(m,"{\"NAME\":\"%s\",\"USER\":\"%d\",\"PID\":\"%d\",\"CPU\":\"%ld\",\"STATUS\":",
+		  seq_printf(m,"{\"NAME\":\"%s\",\"USER\":\"%d\",\"PID\":\"%d\",\"CPU\":\"%d\",\"RAM\":\"%d\",\"STATUS\":",
                   task->comm,
                   task->cred->uid,
 		          task->pid,
-                  task->load_avg);
+                  task->utime,
+                  task->total_vm);
 		if(task->state == 0){
 			seq_printf(m,"\"RUNNING\"}");
 		}
