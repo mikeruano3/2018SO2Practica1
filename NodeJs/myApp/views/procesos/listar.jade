@@ -11,6 +11,8 @@ block content
                     th Usuario
                     th Pid
                     th Estado
+                    th RAM
+                    th CPU
                     th Accion
             tbody#listado
                 for proceso in lista
@@ -19,9 +21,13 @@ block content
                         th #{proceso.user}
                         th #{proceso.pid}
                         th #{proceso.status}
+                        th #{proceso.mem}
+                        th #{proceso.cpu}
                         th
                             a.btn.btn-danger(href="/proceso/matar/#{proceso.pid}" ) Borrar
                 else
+                    th Vacio
+                    th Vacio
                     th Vacio
                     th Vacio
                     th Vacio

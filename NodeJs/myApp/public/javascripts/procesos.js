@@ -46,6 +46,8 @@ $(function() {
                             html  += '<td>' + data.arreglo[i].user + '</td>';
                             html  += '<td>' + data.arreglo[i].pid + '</td>';
                             html  += '<td>' + data.arreglo[i].status + '</td>';
+                            html  += '<td>' + data.arreglo[i].mem + '</td>';
+                            html  += '<td>' + data.arreglo[i].cpu + '</td>';
                             html  += '<td><a class="btn btn-danger" href="/proceso/matar/'+ data.arreglo[i].pid+'">Matar</a></td>';
                             html += '</tr>';
                         }
