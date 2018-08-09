@@ -14,12 +14,11 @@
 
         for_each_process(task){
 		  struct list_head *list;
-		  seq_printf(m,"{\"NAME\":\"%s\",\"USER\":\"%d\",\"PID\":\"%d\",\"CPU\":\"%d\",\"RAM\":\"%ul\",\"STATUS\":",
+		  seq_printf(m,"{\"NAME\":\"%s\",\"USER\":\"%d\",\"PID\":\"%d\",\"CPU\":\"%d\",\"STATUS\":",
                   task->comm,
                   task->cred->uid.val,
 		          task->pid,
-                  task->utime,
-                  task->mm->end_data - task->mm->start_data);
+                  task->utime);
 		if(task->state == 0){
 			seq_printf(m,"\"RUNNING\"}");
 		}
@@ -41,9 +40,18 @@
 		if(task->state == 32){
 			seq_printf(m,"\"Espera Exclusiva\"}");
 		}
-		seq_printf(m,",\n");
 		cont = cont + 1;
+
+        down_read(&task->mm->mmap_sem);       
+        if(task->mm){
+            size = (task->mm->mmap->vm_end - task->mm->mmap->vm_start);
+            seq_printf(m,"\",MEM\":\"%lu\"",size);            
+        }else{
+            seq_printf(m,"\",MEM\":\"0\"");
+        }
+        up_read(&task->mm->mmap_sem);
         
+        seq_printf(m,",\n");
         }
 
         seq_printf(m,"{\"NAME\":\"ultimo\"}]\n}\n");
