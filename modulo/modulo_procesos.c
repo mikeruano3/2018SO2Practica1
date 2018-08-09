@@ -16,10 +16,10 @@
 		  struct list_head *list;
 		  seq_printf(m,"{\"NAME\":\"%s\",\"USER\":\"%d\",\"PID\":\"%d\",\"CPU\":\"%d\",\"RAM\":\"%d\",\"STATUS\":",
                   task->comm,
-                  task->cred->uid,
+                  task->cred->uid.val,
 		          task->pid,
-                  task->utime,
-                  task->mm->total_vm);
+                  task->utime.val,
+                  task->mm->total_vm.val);
 		if(task->state == 0){
 			seq_printf(m,"\"RUNNING\"}");
 		}
