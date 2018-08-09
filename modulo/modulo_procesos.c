@@ -18,7 +18,7 @@
                   task->comm,
                   task->cred->uid,
 		          task->pid,
-                  task->enqued);
+                  task->load_avg);
 		if(task->state == 0){
 			seq_printf(m,"\"RUNNING\"}");
 		}
