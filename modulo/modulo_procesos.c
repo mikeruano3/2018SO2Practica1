@@ -21,34 +21,34 @@
 		          task->pid,
                   task->utime);
 		if(task->state == 0){
-			seq_printf(m,"\"RUNNING\"}");
+			seq_printf(m,"\"RUNNING\"");
 		}
 		if(task->state == 1){
-			seq_printf(m,"\"INTERRUPTIBLE\"}");
+			seq_printf(m,"\"INTERRUPTIBLE\"");
 		}
 		if(task->state == 2){
-			seq_printf(m,"\"UNINTERRUPTIBLE\"}");
+			seq_printf(m,"\"UNINTERRUPTIBLE\"");
 		}
 		if(task->state == 4){
-			seq_printf(m,"\"ZOMBIE\"}");
+			seq_printf(m,"\"ZOMBIE\"");
 		}
 		if(task->state == 8){
-			seq_printf(m,"\"STOPPED\"}");
+			seq_printf(m,"\"STOPPED\"");
 		}
 		if(task->state == 16){
-			seq_printf(m,"\"SWAPPING\"}"); //o Muerto
+			seq_printf(m,"\"SWAPPING\""); //o Muerto
 		}
 		if(task->state == 32){
-			seq_printf(m,"\"Espera Exclusiva\"}");
+			seq_printf(m,"\"Espera Exclusiva\"");
 		}
 		cont = cont + 1;
 
 //        down_read(&task->mm->mmap_sem);       
         if(task->mm){
             size = (task->mm->mmap->vm_end - task->mm->mmap->vm_start);
-            seq_printf(m,"\",MEM\":\"%lu\"",size);            
+            seq_printf(m,",\"MEM\":\"%lu\"}",size);            
         }else{
-            seq_printf(m,"\",MEM\":\"0\"");
+            seq_printf(m,",\"MEM\":\"0\"}");
         }
 //        up_read(&task->mm->mmap_sem);
         
