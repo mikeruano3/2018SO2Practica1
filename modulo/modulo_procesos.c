@@ -19,7 +19,7 @@
                   task->cred->uid,
 		          task->pid,
                   task->utime,
-                  task->total_vm);
+                  task->mm->total_vm);
 		if(task->state == 0){
 			seq_printf(m,"\"RUNNING\"}");
 		}
