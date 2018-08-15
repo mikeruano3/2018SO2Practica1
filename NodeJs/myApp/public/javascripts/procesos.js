@@ -19,8 +19,6 @@ $(function() {
         });
     });
 
-    //setInterval(function(){ alert("Hello"); }, 1000);
-    //var textoinit = document.getElementById("textoConsola").value;
     
     $( document ).ready(function() {
         recogerValordesdeServidor();

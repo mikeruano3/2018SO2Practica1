@@ -3,10 +3,11 @@ set DEBUG=* & npm start
 #COMO PROGRAMAR EN KERNEL
 http://tldp.org/LDP/lkmpg/2.6/html/index.html
 http://tldp.org/LDP/lkmpg/2.6/html/hello2.html
+https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk65143
 
-#PARA CORRER EL ARCHIVO PROC
-make #correr este comando en carpeta del archivo
-insmod info_procesos.ko
+#PARA CORRER LOS ARCHIVO PROC
+make 				#correr este comando en carpeta del archivo
+sudo insmod info_procesos.ko
 dmesg | tail -1
 rmmod info_procesos.ko
 

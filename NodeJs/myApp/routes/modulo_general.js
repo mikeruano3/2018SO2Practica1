@@ -77,26 +77,7 @@ exports.consultar_cpu = function(req, res){
         if (!contenido) {
             throw error;
         }
-/*
-        var cpuinfo = JSON.parse(contenido);
-        var PREVUSER = cpuinfo.USER;
-        var PREVNICE = cpuinfo.NICE;
-        var PREVSYSTEM = cpuinfo.SYSTEM
-        var PREVIDLE = cpuinfo.IDLE;
-        var PREVIOWAIT = cpuinfo.IOWAIT;
-        var PREVIRQ = cpuinfo.IRQ;
-        var PREVSOFTIRQ = cpuinfo.SOFTIRQ;
-        var PREVSTEAL = cpuinfo.STEAL;
-        var PREVGUEST = cpuinfo.GUEST;
-        var PREVGUESTNICE = cpuinfo.GUESTNICE;
 
-        //PORCALCULADO = cpuinfo.PORCALCULADO;
-        //sleep(5);
-        contenido = fs.readFileSync("/proc/cpu_201503666", "utf8");
-        if (!contenido) {
-            throw error;
-        }
-*/
         cpuinfo = JSON.parse(contenido);
         USER = cpuinfo.USER;
         NICE = cpuinfo.NICE;
@@ -110,21 +91,15 @@ exports.consultar_cpu = function(req, res){
         GUESTNICE = cpuinfo.GUESTNICE;
         PORCALCULADO = cpuinfo.PORCALCULADO;
 
-        /*** CODIGO INTERNET  */
-//        var PrevIdle = PREVIDLE + PREVIOWAIT;
+/**
         var Idle = IDLE + IOWAIT;
-
-//        var PrevNonIdle = PREVUSER + PREVNICE + PREVSYSTEM + PREVIRQ + PREVSOFTIRQ + PREVSTEAL;
         var NonIdle = USER + NICE + SYSTEM + IRQ + SOFTIRQ + STEAL + GUEST + GUESTNICE;
-
-//        var PrevTotal = PrevIdle + PrevNonIdle;
         var Total = Idle + NonIdle;
-
-        // differentiate: actual value minus the previous one
-        totald = Total;// - PrevTotal;
-        idled = Idle;// - PrevIdle;
-
+        totald = Total;
+        idled = Idle;
         CPU_Percentage = (totald - idled)/totald*100;
+*/
+    CPU_Percentage = (IDLE * 100) / (USER + NICE + SYSTEM + IDLE + IOWAIT + IRQ + SOFTIRQ );
 	if(CPU_Percentage == 0){
        	 tipo = "ERROR";
          console.log("ERROR");
