@@ -42,7 +42,7 @@ $(function() {
                         document.getElementById("listado").innerHTML = "";
                         var total = 0;
                         for (jk = 0; jk < data.arreglo.length; jk++){
-                            total = total + data.arreglo[i].mem;
+                            total = total + data.arreglo[jk].mem;
                         }
                         for (i = 0; i < data.arreglo.length; i++) {
                             memxproc = data.arreglo[i].mem/total;
